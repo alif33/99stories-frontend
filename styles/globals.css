@@ -14,3 +14,217 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+#log-in {
+  background: #fff;
+  margin: 0 auto;
+  padding: 40px 0px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100vh;
+}
+body{
+  overflow-x: hidden;
+}
+
+#log-in input {
+  padding: 12px 15px;
+  border-radius: 5px;
+  width: 400px;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  margin-bottom: 15px;
+}
+
+#log-in button {
+  padding: 12px 26px;
+  font-size: 15px;
+  background: #E3E2FF;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 400px;
+  border: none;
+  font-weight: 600;
+}
+#log-in button:hover {
+  background: #000;
+  color: #fff;
+  transition: all;
+}
+
+#log-in button a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media(min-width: 320px) and (max-width: 575px) {
+  #log-in {
+      width: auto;
+  }
+  #log-in input {
+      width: 100%;
+  }
+  #log-in button {
+      width: 100%;
+  }
+}
+@media(min-width: 576px) and (max-width: 767px) {
+  #log-in {
+      width: auto;
+  }
+}
+
+
+/* ----------------  edit story part start--------------- */
+.edit-story{
+  padding: 40px 0px;
+  width: 100%;
+  background: #ddd;
+}
+.edit-story .edit-wrapper{
+  width: 1200px;
+  background: #fff;
+  margin: 0 auto;
+
+}
+
+
+
+.edit-story .title h4 {
+  font-size: 18px;
+  border-bottom: 1px solid #dee2e6;
+  color: #2c3e50;
+  padding: 20px;
+  font-weight: 500;
+}
+.edit-story form {
+	margin: 20px;
+}
+.edit-story .left-side input {
+  width: 100%;padding: 10px;
+  border-radius: 5px;
+  border-color: #9f9f9f;
+  margin-bottom: 20px;
+}
+
+.edit-story .textarea-title {border: 1px solid #979797;
+padding: 10px;
+height: 65px;
+border-bottom: none;
+}
+.edit-story textarea {
+  width: 100%;
+  height: 175px;
+  resize: none;
+}
+
+
+
+.right-side h3 {
+  font-size: 24px;
+  border-bottom: 1px solid #dee2e6;
+  color: #2c3e50;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.right-side select {
+  margin-top: 20px;
+  padding: 10px;
+  color: #444;
+  margin-bottom: 15px;
+}
+.check-box .form-check-input {
+  display: inline-block;
+  margin: 4px;
+}
+.check-box .tag {
+  width: 100%;
+}
+.check-box input {
+	padding: 7px;
+  display: block;
+  margin-top: 10px;
+}
+
+
+.right-side label {
+	color: #2c3e50;
+	font-weight: 500;
+}
+.edit-btn{
+  width: 100%;
+  padding: 20px 0px;
+  text-align: right;
+  border-top: 1px solid #dee2e6;
+}
+.edit-btn button {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background: #888;
+  font-weight: 600;
+}
+
+.edit-btn button:last-child{
+  background-color: #3b5998;
+}
+
+
+.loader{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 
+              50% 50% no-repeat rgb(249,249,249);
+}
+
+/* .slick-slide {
+  margin: 0 10px;
+} */
+/* ----------------  edit story part end--------------- */
+/* ----------------  responsive part start --------------- */
+
+@media(min-width: 320px) and (max-width: 575px) {
+  .edit-story .edit-wrapper {
+    width: 100%;
+  }
+  .edit-btn {
+    text-align: center;
+  }
+}
+
+@media(min-width: 576px) and (max-width: 767px) {
+  .edit-story .edit-wrapper {
+    width: 100%;
+  }
+  .edit-btn {
+    text-align: center;
+  }
+}
+@media(min-width: 768px) and (max-width: 991px) {
+  .edit-story .edit-wrapper {
+    width: 100%;
+  }
+  .edit-btn {
+    text-align: center;
+  }
+}
+@media(min-width: 992px) and (max-width: 1200px) {
+  .edit-story .edit-wrapper {
+    width: 100%;
+  }
+}
+/* ----------------  responsive part end--------------- */

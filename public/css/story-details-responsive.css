@@ -1,0 +1,262 @@
+@media(min-width: 320px) and (max-width: 575px) {
+    nav .logo {
+        font-size: 19px;
+    }
+
+    nav button .bar {
+        color: #444;
+        font-size: 19px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 8px 20px !important;
+        border-radius: 7px
+    }
+
+    nav .nav-button a {
+        background: #fff;
+        padding: 8px 20px;
+        font-size: 16px;
+        border-radius: 7px;
+        display: block;
+        margin: 0 !important;
+        margin-bottom: 0px;
+        margin-bottom: 10px !important;
+    }
+
+    .title h3 {
+        font-size: 16px;
+        padding-bottom: 14px;
+    }
+    #stories-part .title {
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+        padding-top: 50px;
+    }
+
+    #stories-part .wrapper{
+        text-align: center;
+    }
+    #stories-part .wrapper .person span {
+        font-size: 14px;
+    }
+
+    #stories-part .wrapper .person {
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
+    #stories-part .wrapper h2 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    #stories-part .arrow {
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    #footer-part {
+        padding: 26px 0px;
+    }
+
+    .footer-content span {
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid #9a9696;
+        margin-bottom: 22px;
+        padding-bottom: 20px;
+    }
+
+    .footer-content ul li {
+        padding: 5px;
+        font-size: 12px;
+        padding: 0px 5px;
+    }
+
+    #footer-part .icon {
+        text-align: center !important;
+    }
+
+    #footer-part .icon i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+
+@media(min-width: 575px) and (max-width: 767px) {
+    nav .logo {
+        font-size: 19px;
+    }
+
+    nav button .bar {
+        color: #444;
+        font-size: 19px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 8px 20px !important;
+        border-radius: 7px
+    }
+
+    nav .nav-button a {
+        background: #fff;
+        padding: 8px 20px;
+        font-size: 16px;
+        border-radius: 7px;
+        display: block;
+        margin: 0 !important;
+        margin-bottom: 0px;
+        margin-bottom: 10px !important;
+    }
+    
+    .title h3 {
+        font-size: 16px;
+        padding-bottom: 14px;
+    }
+
+    #stories-part .title {
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+        padding-top: 50px;
+    }
+
+
+    .stories-item .details .person {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .stories-item .details .person span {
+        font-size: 13px;
+        margin-right: 15px;
+        line-height: 24px;
+    }
+
+
+    #footer-part {
+        padding: 26px 0px;
+    }
+
+    .footer-content span {
+        display: block;
+        text-align: center;
+    }
+
+    .footer-content ul li {
+        padding: 5px;
+        font-size: 12px;
+        padding: 0px 5px;
+    }
+
+    #footer-part .icon {
+        text-align: center !important;
+    }
+
+    #footer-part .icon i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 991px) {
+    nav .logo {
+        font-size: 19px;
+    }
+
+    nav button .bar {
+        color: #444;
+        font-size: 19px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 8px 20px !important;
+        border-radius: 7px
+    }
+
+    nav .nav-button a {
+        background: #fff;
+        padding: 8px 20px;
+        font-size: 16px;
+        border-radius: 7px;
+        display: block;
+        margin: 0 !important;
+        margin-bottom: 0px;
+        margin-bottom: 10px !important;
+    }
+
+
+    .title h3 {
+        font-size: 16px;
+        padding-bottom: 14px;
+    }
+
+    .stories-item .details .person {
+        margin-top: 0px;
+    }
+
+
+
+
+
+
+
+    #footer-part {
+        padding: 26px 0px;
+    }
+
+    .footer-content span {
+        display: block;
+        text-align: center;
+    }
+
+    .footer-content ul li {
+        padding: 6px;
+font-size: 12px;
+    }
+
+    #footer-part .icon {
+        text-align: center !important;
+    }
+
+    #footer-part .icon i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 22px;
+    }
+
+    .footer-content ul li i {
+        font-size: 8px;
+        margin: 10px;
+    }
+}
+
+@media(min-width: 992px) and (max-width: 1100px) {
+    
+    .footer-content ul li {
+        padding: 0px 5px;
+    }
+    .footer-content ul li i {
+        margin: 0;
+        margin-right: 5px;
+    }
+    #footer-part .icon i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .stories-item .details .person {
+        margin-top: 0px;
+    }
+}
