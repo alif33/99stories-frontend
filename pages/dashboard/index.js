@@ -77,13 +77,6 @@ export default function Contests(){
                         <h5>Bookmarks</h5>
                         <h3>{ bookmarks?.length }</h3>
                         </div>
-                        {/* <div className="items">
-                        <h5>membership</h5>
-                            <div className="icon">
-                                <h5><span class="badge bg-secondary">FREE</span></h5>
-                                <button type="button" class="btn btn-success mt-3">Premium</button>
-                            </div>
-                        </div> */}
                     </div>
                     </div>
                 </div>
