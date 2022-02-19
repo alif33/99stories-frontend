@@ -28,7 +28,6 @@ const Feedback = ({ story_id }) => {
     const onError = err => showErr(err)
     const onSubmit = async data => {
       if (users?.isUser) {
-        console.log(users.token);
         authPost(`/story/comment/${story_id}`, data, users.token)
             .then(comment=>{
                 if(comment?.success){

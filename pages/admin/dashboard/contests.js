@@ -91,14 +91,11 @@ export default function Contests(){
                                     )
                                 })
                             }
-                            
                         </tbody>
                         </table>
                     </div>
                 </div>
                 }
-                
-              
             </div>
         </Layout>
     )

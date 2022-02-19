@@ -33,6 +33,7 @@ const AddStory = ({ setTrigger  }) => {
                 dispatch(setUserContest(users.token))
                 toast.success(contest.message)
                 setDisable(false)
+                reset()
             }else{
                 console.log(contest.response)
                 // toast.error(category.response.data[0]?.category_name[0])
@@ -63,7 +64,7 @@ const AddStory = ({ setTrigger  }) => {
                 end_date: endDate
             })
         }
-        reset()
+        
     }
     return (
         <>  

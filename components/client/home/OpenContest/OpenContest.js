@@ -1,10 +1,10 @@
 import React from 'react'
-import { IMAGE_URL } from '../../../helpers/HttpService'
 import Link from 'next/link'
 import Image from 'next/image'
+import { IMAGE_URL } from '../../../../helpers/HttpService'
 
 
-const ContestsComponent = ({ contests }) => {
+const OpenContest = ({ contests }) => {
     
     return (
         
@@ -59,4 +59,4 @@ const ContestsComponent = ({ contests }) => {
     )
 }
 
-export default ContestsComponent
+export default OpenContest;

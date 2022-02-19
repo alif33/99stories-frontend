@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-export const ROOT_URL= `http://localhost:3000/`
-export const APP_URL= `http://127.0.0.1:8000/`
+export const ROOT_URL= `http://99.bachelortimes.com/`
+export const APP_URL= `http://99.bachelortimes.com/`
 export const IMAGE_URL = `${APP_URL}storage/`
 export const API_URL= `${APP_URL}api/`
 export const BLANK_IMAGE= `https://res.cloudinary.com/homefinder/image/upload/v1638456798/99stories/blank-photo-icon-vector-3265848-removebg-preview_f3yxje.png`

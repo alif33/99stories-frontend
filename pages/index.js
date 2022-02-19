@@ -1,9 +1,9 @@
 import Layout from '../layouts/client'
-import BannerComponent from '../components/client/Home/BannerComponent'
-import SliderComponent from '../components/client/Home/SliderComponent'
-import ContestsComponent from '../components/client/home/ContestsComponent'
 import FaqComponent from '../components/client/Home/FaqComponent'
 import { getData } from '../helpers/HttpService'
+import BannerComponent from '../components/client/home/Banner/BannerComponent'
+import TrandingContests from '../components/client/home/TrandingContest/TrandingContests'
+import OpenContest from '../components/client/home/OpenContest/OpenContest'
 
 
 export default function Home({ contests }) {
@@ -11,12 +11,12 @@ export default function Home({ contests }) {
   return (
     <Layout>
         <BannerComponent/>
-        <SliderComponent
+        <TrandingContests
           contests={
             contests
           }
         />
-        <ContestsComponent
+        <OpenContest
             contests={
               contests
             }

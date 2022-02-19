@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setStory } from '../../../redux/stories/actions'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { setStory } from '../../../../redux/stories/actions'
 const BannerComponent = () => {
     // const dispatch = useDispatch()
     // useEffect(()=>{

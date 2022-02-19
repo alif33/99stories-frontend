@@ -13,7 +13,6 @@ const Layout = ({ children }) => {
     //     !users?.isUser && router.push('/')
     // },[])
 
-    console.log(users)
 	return (
 		<>
             <Navbar />

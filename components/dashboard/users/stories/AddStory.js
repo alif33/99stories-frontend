@@ -8,6 +8,14 @@ import { setContest } from '../../../../redux/contests/actions'
 import { setUserStory } from '../../../../redux/stories/actions'
 import { toast, ToastContainer } from 'react-toastify'
 import dynamic from 'next/dynamic'
+import Select from 'react-select'
+
+
+const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
 
 
 const SunEditor = dynamic(() => import("suneditor-react"), {
@@ -127,15 +135,11 @@ const AddStory = ({ setCreate  }) => {
                                             />
                                             <label className="form-check-label" htmlFor="flexCheckDefault">Is adult story?
                                             </label>
-                                            <input 
-                                                {...register("tags",
-                                                    {
-                                                        required: 'Tags is required',
-                                                    }
-                                                )}
-                                                type="text" 
-                                                className="tag" 
-                                                placeholder="# tags (max 5 allowed separate using )" 
+                                            <Select options={options}
+                                            isMulti
+                                            name="colors"
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
                                             />
                                         </div>
                                         <select 

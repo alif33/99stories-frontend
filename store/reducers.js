@@ -5,6 +5,7 @@ import { adminSlice } from '../redux/admins/slice'
 import { SettingSlice } from '../redux/settings/slice'
 import { storySlice } from '../redux/stories/slice'
 import { contestSlice } from '../redux/contests/slice'
+import { tagSlice } from './../redux/tag/slice';
 
 export const rootReducer = combineReducers({
     users: userSlice.reducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
     categories: categorySlice.reducer,
     stories: storySlice.reducer,
     contests: contestSlice.reducer,
+    tags: tagSlice.reducer
 })
