@@ -23,9 +23,9 @@ const TrandingContests = ({ contests }) => {
     arrows: true,
     dots: true,
     infinite: true,
-    // autoPlay: true,
-    // speed: 1000,
-    // autoplaySpeed: 2000,
+    autoPlay: true,
+    speed: 1000,
+    autoplaySpeed: 2000,
 
     responsive: [
       {

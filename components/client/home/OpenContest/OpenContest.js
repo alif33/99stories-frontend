@@ -5,7 +5,6 @@ import { IMAGE_URL } from '../../../../helpers/HttpService'
 
 
 const OpenContest = ({ contests }) => {
-    
     return (
         
       <section id="story-part">
@@ -19,9 +18,9 @@ const OpenContest = ({ contests }) => {
             </div>
             <div className="row">
             {
-                contests?.map(item=>{
+                contests?.map((item, i)=>{
                     return(
-                        <div className="col-lg-4 col-sm-4 col-md-4">
+                        <div key={i} className="col-lg-4 col-sm-4 col-md-4">
                             <div className="story-item">
                                 <div className="img">
                                     <Link href="">

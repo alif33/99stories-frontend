@@ -10,24 +10,22 @@ import axios from 'axios'
 import { adminAuth } from '../../../helpers/requireAuthentication'
 import { firstNWord } from '../../../helpers/Validator'
 
-
-
 export default function Contests(){
 
     const [ trigger, setTrigger ] = useState()
     const [ loading, setLoading ] = useState(true)
     const { settings, admins, contests } = useSelector(state=>state)
     const dispatch = useDispatch()
-
+    console.log(contests)
     useEffect( ()=>{
         setLoading(true)
             dispatch(setAdminContest(admins.token)) 
         setLoading(false)
     }, [])
+    // console.log(contests)
 
-
-    const statusHandler = (sta, id) => {
-        axios.put(`${API_URL}admin/contest/${sta? 'deactive': 'active'}/${id}`,{}, {
+    const statusHandler = (status, id) => {
+        axios.put(`${API_URL}admin/contest/${status == 0 ? 'active': 'deactive'}/${id}`,{}, {
             headers: {
                 'Authorization': `Bearer ${admins.token}`, 
                 'Content-Type': 'application/json'
@@ -71,25 +69,21 @@ export default function Contests(){
                         </thead>
                         <tbody>
                             {
-                                contests.adminContestList?.map((item, index)=>{
-                                    return(
-                                        <tr key={index}>
-                                            <th scope="row" className="row-scope-line">{item.id}</th>
-                                            <td><img src={IMAGE_URL+item.contest_image}/></td>
-                                            <td className="text-center">{ item.contest_title }</td>
-                                            <td className="text-center">{ parse(firstNWord(item.contest_description, 100)) }</td>
-                                            <td className="text-center">{ item.start_date.split(' ').slice(1,4).join(' ') }</td>
-                                            <td className="text-center">{ item.end_date.split(' ').slice(1,4).join(' ') }</td>
-                                            <td className="text-center">{ item.status? "Active":"Inactive" }</td>
-                                            <td className="text-center">
-                                                {
-                                                    !item.status ? <i onClick={()=>statusHandler(item.status, item.id)} style={{ cursor: 'pointer', color: 'green', fontSize: '20px' }} className="fas fa-check-circle"></i> :
-                                                    <i onClick={()=>statusHandler(item.status, item.id)} style={{ cursor: 'pointer', color: 'red', fontSize: '20px' }} className="fas fa-times"></i>
-                                                }
-                                            </td>
-                                        </tr>
-                                    )
-                                })
+                                contests.adminContestList?.map((item, i) => (<tr key={i}>
+                                <th scope="row" className="row-scope-line">{item.id}</th>
+                                <td><img src={IMAGE_URL+item.contest_image}/></td>
+                                <td className="text-center">{ item.contest_title }</td>
+                                <td className="text-center">{ parse(firstNWord(item.contest_description, 100)) }</td>
+                                <td className="text-center">{ item.start_date.split(' ').slice(1,4).join(' ') }</td>
+                                <td className="text-center">{ item.end_date.split(' ').slice(1,4).join(' ') }</td>
+                                <td className="text-center">{ item.status == 1? "Active":"Inactive" }</td>
+                                <td className="text-center">
+                                    {
+                                        !item.status ? <i onClick={()=>statusHandler(item.status, item.id)} style={{ cursor: 'pointer', color: 'green', fontSize: '20px' }} className="fas fa-check-circle"></i> :
+                                        <i onClick={()=>statusHandler(item.status, item.id)} style={{ cursor: 'pointer', color: 'red', fontSize: '20px' }} className="fas fa-times"></i>
+                                    }
+                                </td>
+                            </tr>))
                             }
                         </tbody>
                         </table>

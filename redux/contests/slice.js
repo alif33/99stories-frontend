@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 export const contestSlice = createSlice({
     name: "contests",
     initialState: {
-        contestList: null,
-        userContestList: null,
-        adminContestList: null,
+        contestList: [],
+        userContestList: [],
+        adminContestList: [],
     },
     reducers: {
         setContest: (state, action) => {

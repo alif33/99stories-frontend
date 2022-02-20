@@ -27,7 +27,7 @@ export default function Home({ contests }) {
 }
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const contests = await getData('/contests')
   return {
     props: {
@@ -35,3 +35,4 @@ export async function getStaticProps() {
     }
   }
 }
+

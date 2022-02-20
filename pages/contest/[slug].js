@@ -4,28 +4,28 @@ import Layout from '../../layouts/client'
 import { useRouter } from 'next/dist/client/router'
 import SocialShare from '../../components/client/common/SocialShare'
 
-// export const getStaticPaths = async () => {
-//     return {
-//         paths: [],
-//         fallback: 'blocking'
-//     }
-// }
+export const getStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
+    }
+}
 
 
-// export async function getStaticProps(ctx) {
-//   const { slug } = ctx.params
-//   const contest = await postReq(`/contest/${slug}`,{})
-//   return {
-//     props: {
-//         item: contest
-//     }
-//   }
-// }
+export async function getStaticProps(ctx) {
+  const { slug } = ctx.params
+  const contest = await postReq(`/contest/${slug}`,{})
+  return {
+    props: {
+        item: contest
+    }
+  }
+}
 
 
 export default function Contest ({ item }) {
  const router = useRouter()
-
+  console.log(item)
  const handleParticipate = id => {
   router.push({
     pathname: '/dashboard/participate',
@@ -36,8 +36,7 @@ export default function Contest ({ item }) {
  }
   return (
     <Layout>
-      <h1>Hello world</h1>
-      {/* <section id="stories-part">
+      <section id="stories-part">
         <div className="row">
           <div className="col-lg-12 col-sm-12 col-md-12">
             <div className="title">
@@ -83,7 +82,7 @@ export default function Contest ({ item }) {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </Layout>
   )
 }

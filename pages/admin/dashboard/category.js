@@ -37,7 +37,6 @@ export default function Category(){
                 setDisable(false)
             }else{
 
-                console.log(category?.response)
                 if(category.response?.data[0]?.category_name)
                     toast.error(category.response?.data[0]?.category_name[0])
                 if(category.response?.data[0]?.image)

@@ -31,7 +31,6 @@ export default function Stories(){
             }
         })
         .then(contest=>{
-            console.log(contest)
             if(contest)
                 dispatch(setAdminStory(admins.token))
                 toast.success(contest.data?.message)

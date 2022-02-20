@@ -3,7 +3,7 @@ import { getData } from "../../helpers/HttpService"
 const { actions: slice } = tagSlice;
 
 export const setTag = () => (dispatch) => {
-  getData('/')
+  getData('/tags')
   .then(response=>dispatch(slice.setTag(response)))
   
 }

@@ -21,7 +21,6 @@ const AddStory = ({ setCreate  }) => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        console.log(admins);
         dispatch(setCategory())
     }, [])
 
