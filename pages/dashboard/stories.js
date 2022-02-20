@@ -14,11 +14,14 @@ import AddStory from '../../components/dashboard/users/stories/AddStory'
 
 import axios from 'axios'
 import { userAuth } from '../../helpers/requireAuthentication'
+import EditStory from '../../components/dashboard/users/stories/EditStory'
 
 export default function Stories() {
 
     const [disable, setDisable] = useState()
     const [create, setCreate] = useState()
+    const [storyEdit, setStoryEdit] = useState({isUpdate : false, story: null})
+
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { settings, users, categories, stories } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -28,15 +31,29 @@ export default function Stories() {
     }, [users.token])
 
 
-   const statusHandler = (status, id) =>{
-        console.log(status, id)
-   }
+    // const statusHandler = (status, id) => {
+
+    //     axios.put(`${API_URL}admin/contest/${status == 0 ? 'active' : 'deactive'}/${id}`, {}, {
+    //         headers: {
+    //             'Authorization': `Bearer ${admins.token}`,
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(contest => {
+    //             if (contest)
+    //                 dispatch(setAdminContest(admins.token))
+    //             toast.success(contest.data?.message)
+    //         })
+    //         .catch(err => console.log(err.response))
+    // }
     return (
         <>
+
+       
             {
                 create ? <AddStory
                     setCreate={setCreate}
-                /> : <Layout>
+                /> : storyEdit.isUpdate ? <EditStory setStoryEdit = {setStoryEdit} storyEdit={storyEdit}/> : <Layout>
                     <div className={settings.sidebar ? "unboarding unboarding_active" : "unboarding"}>
                         <div className="t_header py-3">
                             <div className="row heading_button">
@@ -89,7 +106,10 @@ export default function Stories() {
                                                         <td className="text-center">
                                                             {
                                                                 <i
-                                                                    onClick={() => statusHandler(item.stories_status, item.id)}
+                                                                    onClick={() => {
+                                                                        dispatch(modalToggle(settings.modal))
+                                                                        setStoryEdit({isUpdate: true, story: item})
+                                                                    }}
                                                                     style={{ cursor: 'pointer', fontSize: '17px' }}
                                                                     className="fas fa-edit"
                                                                 >
