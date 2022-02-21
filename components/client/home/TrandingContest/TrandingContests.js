@@ -17,22 +17,19 @@ const TrandingContests = ({ contests }) => {
   // }
 
   const settings = {
-
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    arrows: true,
     dots: true,
     infinite: true,
-    autoPlay: true,
-    speed: 1000,
-    autoplaySpeed: 2000,
-
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1500,
+    autoplaySpeed: 1500,
     responsive: [
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }
@@ -41,14 +38,14 @@ const TrandingContests = ({ contests }) => {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToScroll: 1
         }
       },
       {
         breakpoint: 576,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToScroll: 1
         }
       }
     ]
@@ -79,43 +76,43 @@ const TrandingContests = ({ contests }) => {
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>hello world 1</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>hello world 2</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>hello world 3</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>hello world 4</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>Hello world 5</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>Hello world 5</p>
             </div>
             <div className="tranding-item">
               <a href="#">
                 <img  src="images/tranding-book.png" alt="tranding-book" />
               </a>
-              <p>fgdgfgdgdfgdfgdfgdfg</p>
+              <p>Hello world 6</p>
             </div>
 
           </Slider>

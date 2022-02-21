@@ -39,40 +39,28 @@ const AddStory = ({ setCreate }) => {
     }, [])
 
 
+
+
     const onSubmit = async data => {
-        console.log(data)
-        if (data?.image.length > 0) {
-            const formData = await getFormData(['image', 'title', 'details', 'summary', 'adult', 'tags', 'contest_id', 'category_id'
-            ], [
-                data.image[0],
-                data.title,
-                details,
-                data.summary,
-                data.adult ? 1 : 0,
-                selectTag,
-                con,
-                cat,
-            ])
-            await addStory(formData)
-        } else {
-            const { title, summary, adult, category_id } = data
-            await addStory({
-                title,
-                summary,
-                details,
-                adult: adult ? 1 : 0,
-                tags: selectTag,
-                contest_id: con,
-                category_id: cat
-            })
+        const formData = new FormData()
+        formData.append('title', data.title)
+        formData.append('summary', data.summary)
+        formData.append('details', details)
+        formData.append('adult', data.adult === false ? 0 : 1)
+        formData.append('contest_id', data.contest_id)
+        formData.append('category_id', data.category_id)
+        formData.append('image', data.image[0])
+        for (let i = 0; i < selectTag?.length; i++) {
+            formData.append('tags[]', selectTag[i].value || tags)
         }
-        
+        await addStory(formData)
     }
 
     const addStory = async data => {
         setDisable(true)
         authPost('/story', data, users.token)
             .then(story => {
+                console.log(story)
                 if (story?.success) {
                     dispatch(setUserStory(users?.token))
                     toast.success(story.message)
@@ -84,7 +72,40 @@ const AddStory = ({ setCreate }) => {
             })
     }
 
-    const onError = err => showErr(err)
+
+
+    // for (let i = 0; i < selectTags?.length; i++) {
+    //     formData.append('tags[]', selectTags[i].value || tags)
+    // }
+    // const onSubmit = async data => {
+    //     console.log(data)
+    //     if (data?.image.length > 0) {
+    //         const formData = await getFormData(['image', 'title', 'details', 'summary', 'adult', 'tags[]', 'contest_id', 'category_id'
+    //         ], [
+    //             data.image[0],
+    //             data.title,
+    //             details,
+    //             data.summary,
+    //             data.adult ? 1 : 0,
+    //             selectTag,
+    //             con,
+    //             cat,
+    //         ])
+    //         await addStory(formData)
+    //     } else {
+    //         const { title, summary, adult, category_id } = data
+    //         await addStory({
+    //             title,
+    //             summary,
+    //             details,
+    //             adult: adult ? 1 : 0,
+    //             tags: selectTag,
+    //             contest_id: con,
+    //             category_id: cat
+    //         })
+    //     }
+
+    // }
 
     const { tagList } = tags
     const tagOption = tagList?.map(tag => ({
@@ -106,7 +127,7 @@ const AddStory = ({ setCreate }) => {
                                 </div>
                             </div>
                         </div>
-                        <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit, onError)}>
+                        <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
                             <div className="row">
                                 <div className="col-lg-8 col-sm-12 col-md-12">
                                     <div className="left-side">
@@ -119,6 +140,9 @@ const AddStory = ({ setCreate }) => {
                                             type="text"
                                             placeholder="Story Title"
                                         />
+                                        <div>
+                                            {errors?.title && <span className='text-danger'>Title Required</span>}
+                                        </div>
                                         <input
                                             {...register("summary",
                                                 {
@@ -128,6 +152,9 @@ const AddStory = ({ setCreate }) => {
                                             type="text"
                                             placeholder="Story Summary"
                                         />
+                                        <div>
+                                            {errors?.summary && <span className='text-danger'>Summary Required</span>}
+                                        </div>
                                         <SunEditor
                                             onChange={
                                                 e => setDetails(e)
@@ -162,33 +189,53 @@ const AddStory = ({ setCreate }) => {
                                             </div>
                                         </div>
                                         <select
+                                            {...register("contest_id",
+                                                {
+                                                    required: 'Contest is required',
+                                                }
+                                            )}
                                             className="form-select"
-                                            name="contest_id"
-                                            onChange={e => setCon(e.target.value)}
                                         >
-                                            <option>Select Contest </option>
+                                            <option defaultValue>Select Contest </option>
                                             {
                                                 contests?.contestList?.map((item, index) => <option key={index} value={item.id}>{item.contest_title}</option>)
                                             }
                                         </select>
+                                        <div>
+                                            {errors?.contest_id && <span className='text-danger'>Contest Required</span>}
+                                        </div>
                                         <select
+                                            {...register("category_id",
+                                                {
+                                                    required: 'contest is required',
+                                                }
+                                            )}
                                             className="form-select"
-                                            name="category_id"
-                                            onChange={e => setCat(e.target.value)}
+
                                         >
-                                            <option>Pick Categories </option>
+                                            <option defaultValue>Pick Categories </option>
                                             {
                                                 categories?.categoryList?.map((item, index) => <option key={index} value={item.id}>{item.category_name}</option>)
                                             }
                                         </select>
+                                        <div>
+                                            {errors?.category_id && <span className='text-danger'>Category Required</span>}
+                                        </div>
                                         <div className="mb-3">
                                             <label htmlFor="formFile" className="form-label">Story Image</label>
                                             <input
-                                                {...register("image")}
+                                                {...register("image",
+                                                    {
+                                                        required: 'Image is required',
+                                                    }
+                                                )}
                                                 className="form-control"
                                                 type="file"
                                                 id="formFile"
                                             />
+                                            <div>
+                                                {errors?.image && <span className='text-danger'>Image Required</span>}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
