@@ -41,11 +41,26 @@ const ParticipateStory = ({ setCreate, id }) => {
         dispatch(setTag())
     }, [])
 
+    const onSubmit = async data => {
+        const formData = new FormData()
+        formData.append('title', data.title)
+        formData.append('summary', data.summary)
+        formData.append('details', details)
+        formData.append('adult', data.adult === false ? 0 : 1)
+        formData.append('contest_id', data.contest_id)
+        formData.append('category_id', data.category_id)
+        formData.append('image', data.image[0])
+        for (let i = 0; i < selectTag?.length; i++) {
+            formData.append('tags[]', selectTag[i].value || tags)
+        }
+        await addStory(formData)
+    }
 
     const addStory = async data => {
         setDisable(true)
         authPost('/story', data, users.token)
             .then(story => {
+                console.log(story)
                 if (story?.success) {
                     dispatch(setUserStory(users?.token))
                     toast.success(story.message)
@@ -56,38 +71,6 @@ const ParticipateStory = ({ setCreate, id }) => {
                 }
             })
     }
-
-    const onError = err => showErr(err)
-
-    const onSubmit = async data => {
-        if (data?.image.length > 0) {
-            const formData = await getFormData(['image', 'title', 'details', 'summary', 'adult', 'tags', 'contest_id', 'category_id'
-            ], [
-                data.image[0],
-                data.title,
-                formdata.details,
-                data.summary,
-                data.adult ? 1 : 0,
-                data.tags,
-                id,
-                formdata.category_id,
-            ])
-            await addStory(formData)
-        } else {
-            const { title, summary, adult, tags } = data
-            await addStory({
-                title,
-                summary,
-                details: formdata.details,
-                adult: adult ? 1 : 0,
-                tags,
-                contest_id: id,
-                category_id: formdata.category_id
-            })
-        }
-       
-    }
-
 
     const { tagList } = tags
     const tagOption = tagList?.map(tag => ({
@@ -111,7 +94,7 @@ const ParticipateStory = ({ setCreate, id }) => {
                                 </div>
                             </div>
                         </div>
-                        <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit, onError)}>
+                        <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
                             <div className="row">
                                 <div className="col-lg-8 col-sm-12 col-md-12">
                                     <div className="left-side">
@@ -124,6 +107,9 @@ const ParticipateStory = ({ setCreate, id }) => {
                                             type="text"
                                             placeholder="Story Title"
                                         />
+                                        <div>
+                                            {errors?.title && <span className='text-danger'>Title is required</span>}
+                                        </div>
                                         <input
                                             {...register("summary",
                                                 {
@@ -133,6 +119,9 @@ const ParticipateStory = ({ setCreate, id }) => {
                                             type="text"
                                             placeholder="Story Summary"
                                         />
+                                        <div>
+                                            {errors?.summary && <span className='text-danger'>Summary is required</span>}
+                                        </div>
                                         <SunEditor
                                             onChange={
                                                 e => setFormdata({
@@ -180,11 +169,19 @@ const ParticipateStory = ({ setCreate, id }) => {
                                         <div className="mb-3">
                                             <label htmlFor="formFile" className="form-label">Story Image</label>
                                             <input
-                                                {...register("image")}
+                                                {...register("image",
+                                                    {
+                                                        required: 'Image is required',
+                                                    }
+                                                )}
+
                                                 className="form-control"
                                                 type="file"
                                                 id="formFile"
                                             />
+                                            <div>
+                                                {errors?.image && <span className='text-danger'>Image is required</span>}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

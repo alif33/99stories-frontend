@@ -15,12 +15,13 @@ import AddStory from '../../components/dashboard/users/stories/AddStory'
 import axios from 'axios'
 import { userAuth } from '../../helpers/requireAuthentication'
 import EditStory from '../../components/dashboard/users/stories/EditStory'
+import StoryDescription from '../../components/dashboard/users/stories/Description'
 
 export default function Stories() {
 
     const [disable, setDisable] = useState()
     const [create, setCreate] = useState()
-    const [storyEdit, setStoryEdit] = useState({isUpdate : false, story: null})
+    const [storyEdit, setStoryEdit] = useState({ isUpdate: false, story: null })
 
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { settings, users, categories, stories } = useSelector(state => state)
@@ -28,7 +29,9 @@ export default function Stories() {
 
     useEffect(async () => {
         dispatch(setUserStory(users?.token))
-    }, [users.token])
+    }, [users.token]);
+
+    const [description, setDescription] = useState({ isDescription: false, data: null })
 
 
     // const statusHandler = (status, id) => {
@@ -48,12 +51,12 @@ export default function Stories() {
     // }
     return (
         <>
+            { description.isDescription && <StoryDescription setDescription={setDescription} description={description}/>}
 
-       
             {
                 create ? <AddStory
                     setCreate={setCreate}
-                /> : storyEdit.isUpdate ? <EditStory setStoryEdit = {setStoryEdit} storyEdit={storyEdit}/> : <Layout>
+                /> : storyEdit.isUpdate ? <EditStory setStoryEdit={setStoryEdit} storyEdit={storyEdit} /> : <Layout>
                     <div className={settings.sidebar ? "unboarding unboarding_active" : "unboarding"}>
                         <div className="t_header py-3">
                             <div className="row heading_button">
@@ -100,7 +103,16 @@ export default function Stories() {
                                                         </th>
                                                         <td><img src={IMAGE_URL + item.story_image} /></td>
                                                         <td className="text-center">{item.title}</td>
-                                                        <td className="text-center">{parse(item?.details)}</td>
+                                                        <td className="text-center">
+
+                                                            <a onClick={() => {
+                                                                dispatch(modalToggle(settings.modal))
+                                                                setDescription({isDescription: true, data: item.details})
+                                                            }}
+                                                                style={{ cursor: 'pointer' }}
+                                                                className=''>Read..</a>
+
+                                                        </td>
                                                         <td className="text-center">{item?.tags}</td>
                                                         <td className="text-center">{item.status ? "Active" : "Inactive"}</td>
                                                         <td className="text-center">
@@ -108,7 +120,7 @@ export default function Stories() {
                                                                 <i
                                                                     onClick={() => {
                                                                         dispatch(modalToggle(settings.modal))
-                                                                        setStoryEdit({isUpdate: true, story: item})
+                                                                        setStoryEdit({ isUpdate: true, story: item })
                                                                     }}
                                                                     style={{ cursor: 'pointer', fontSize: '17px' }}
                                                                     className="fas fa-edit"

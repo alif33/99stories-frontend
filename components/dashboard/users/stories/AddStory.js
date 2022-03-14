@@ -37,10 +37,7 @@ const AddStory = ({ setCreate }) => {
         dispatch(setContest())
         dispatch(setTag())
     }, [])
-
-
-
-
+    
     const onSubmit = async data => {
         const formData = new FormData()
         formData.append('title', data.title)
@@ -60,7 +57,6 @@ const AddStory = ({ setCreate }) => {
         setDisable(true)
         authPost('/story', data, users.token)
             .then(story => {
-                console.log(story)
                 if (story?.success) {
                     dispatch(setUserStory(users?.token))
                     toast.success(story.message)
@@ -72,40 +68,6 @@ const AddStory = ({ setCreate }) => {
             })
     }
 
-
-
-    // for (let i = 0; i < selectTags?.length; i++) {
-    //     formData.append('tags[]', selectTags[i].value || tags)
-    // }
-    // const onSubmit = async data => {
-    //     console.log(data)
-    //     if (data?.image.length > 0) {
-    //         const formData = await getFormData(['image', 'title', 'details', 'summary', 'adult', 'tags[]', 'contest_id', 'category_id'
-    //         ], [
-    //             data.image[0],
-    //             data.title,
-    //             details,
-    //             data.summary,
-    //             data.adult ? 1 : 0,
-    //             selectTag,
-    //             con,
-    //             cat,
-    //         ])
-    //         await addStory(formData)
-    //     } else {
-    //         const { title, summary, adult, category_id } = data
-    //         await addStory({
-    //             title,
-    //             summary,
-    //             details,
-    //             adult: adult ? 1 : 0,
-    //             tags: selectTag,
-    //             contest_id: con,
-    //             category_id: cat
-    //         })
-    //     }
-
-    // }
 
     const { tagList } = tags
     const tagOption = tagList?.map(tag => ({
